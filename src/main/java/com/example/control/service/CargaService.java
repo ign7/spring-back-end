@@ -24,6 +24,10 @@ public class CargaService {
 		return repository.save(obj);
 	}
 	
+	public Carga insertVeiculo(Carga obj){
+		return repository.save(obj);
+	}
+	
 	public void  delete(long obj) {
 		try {
 			repository.deleteById(obj);

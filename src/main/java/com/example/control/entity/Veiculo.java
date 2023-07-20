@@ -35,6 +35,9 @@ public class Veiculo implements Serializable {
 	@OneToMany(mappedBy = "manutencao")
 	private List<Manutencao> manutencoes = new ArrayList<>();
 	
+	@OneToMany(mappedBy="cargaVeiculo")
+	private List<Carga> cargas = new ArrayList<>();
+	
 	public Veiculo() {
 		
 	}
@@ -116,6 +119,16 @@ public class Veiculo implements Serializable {
 
 	public void setManutencoes(List<Manutencao> manutencoes) {
 		this.manutencoes = manutencoes;
+	}
+	
+	
+
+	public List<Carga> getCargas() {
+		return cargas;
+	}
+
+	public void setCargas(List<Carga> cargas) {
+		this.cargas = cargas;
 	}
 
 	@Override

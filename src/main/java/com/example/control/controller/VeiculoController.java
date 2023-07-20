@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,14 @@ public class VeiculoController {
 		List<Veiculo> list = veiculoService.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-
+	
+	
+	@GetMapping(value="/{id}")
+	@CrossOrigin("http://localhost:3000")
+	public  ResponseEntity<Optional<Veiculo>> findByid(@PathVariable Long id){		
+		Optional<Veiculo> v=veiculoService.findbyid(id);
+		return ResponseEntity.ok().body(v);
+	}
 	
 	
 	
@@ -50,7 +58,7 @@ public class VeiculoController {
 
 	    if (!imagem.isEmpty()) {
 	        String nomeArquivo = imagem.getOriginalFilename();
-	        String diretorio = "C:\\Users\\User\\front-end-control\\src\\images"; // Defina o diretório onde você deseja salvar a imagem
+	        String diretorio = "C:\\Users\\User\\front-end-control\\src\\images"; 
 
 	        try {
 	            imagem.transferTo(new File(diretorio, nomeArquivo));
