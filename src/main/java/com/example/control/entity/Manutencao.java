@@ -1,7 +1,7 @@
 package com.example.control.entity;
 
 import java.io.Serializable;
-import java.time.Instant;
+
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,7 +25,7 @@ public class Manutencao  implements Serializable {
 	private String nome;
 	private double km;
 	private double valor;
-	private Instant dataManutencao;
+	private String dataManutencao;
 	
 	private String observacao;
 	
@@ -38,7 +38,7 @@ public class Manutencao  implements Serializable {
 		
 	}
 
-	public Manutencao(long id, String nome, double km, double valor, Instant dataManutencao, String observacao) {
+	public Manutencao(long id, String nome, double km, double valor, String dataManutencao, String observacao) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -80,11 +80,11 @@ public class Manutencao  implements Serializable {
 		this.valor = valor;
 	}
 
-	public Instant getDataManutencao() {
+	public String getDataManutencao() {
 		return dataManutencao;
 	}
 
-	public void setDataManutencao(Instant dataManutencao) {
+	public void setDataManutencao(String dataManutencao) {
 		this.dataManutencao = dataManutencao;
 	}
 

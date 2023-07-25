@@ -30,10 +30,14 @@ public class Empresa implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="veiculo_id")
 	private Veiculo veiculo;
+		
 	
 	
 	@OneToMany(mappedBy = "empresa")
 	private List<Carga> cargas = new ArrayList<>();
+	
+	@OneToMany
+	private List<Entrega> entregas = new ArrayList<>();
 
 	public Empresa() {
 		
@@ -86,6 +90,17 @@ public class Empresa implements Serializable {
 
 	public void setCargas(List<Carga> cargas) {
 		this.cargas = cargas;
+	}
+	
+	
+	
+
+	public List<Entrega> getEntregas() {
+		return entregas;
+	}
+
+	public void setEntregas(List<Entrega> entregas) {
+		this.entregas = entregas;
 	}
 
 	@Override

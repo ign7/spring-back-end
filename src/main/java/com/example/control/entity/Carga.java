@@ -44,6 +44,11 @@ public class Carga  implements Serializable {
 	@JoinColumn(name="veiculo_carga_id")
 	private Veiculo cargaVeiculo;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="entrega_carga_id")
+	private Entrega entregaCarga;
+	
 	public Carga() {
 		
 	}
@@ -144,6 +149,16 @@ public class Carga  implements Serializable {
 
 	public void setCargaVeiculo(Veiculo cargaVeiculo) {
 		this.cargaVeiculo = cargaVeiculo;
+	}
+	
+	
+
+	public Entrega getEntregaCarga() {
+		return entregaCarga;
+	}
+
+	public void setEntregaCarga(Entrega entregaCarga) {
+		this.entregaCarga = entregaCarga;
 	}
 
 	@Override

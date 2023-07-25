@@ -24,6 +24,9 @@ public class Despesa  implements Serializable {
 	private double refeicao;
 	private double ajudante;
 	private double pedagio;
+	//private String contador;
+	//private double preco_Contador;
+	//private Double MEI_valor;
 	
 	@JsonIgnore
 	@OneToOne

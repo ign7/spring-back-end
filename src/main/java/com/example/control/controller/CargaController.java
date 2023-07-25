@@ -18,6 +18,7 @@ import com.example.control.entity.Empresa;
 import com.example.control.entity.Veiculo;
 import com.example.control.repository.CargaRepository;
 import com.example.control.repository.EmpresaRepository;
+import com.example.control.repository.EntregaRepository;
 import com.example.control.repository.VeiculoRepository;
 import com.example.control.service.CargaService;
 
@@ -36,6 +37,9 @@ public class CargaController {
 	
 	@Autowired
 	VeiculoRepository vr;
+	
+	@Autowired
+	EntregaRepository entr;
 	
 
 	@GetMapping
@@ -58,6 +62,20 @@ public class CargaController {
 	    obj = service.insert(obj);
 	    return ResponseEntity.ok().body(obj);
 	}
+	
+	//@PostMapping("/{empresaId}/{entregaId}")	
+	//@CrossOrigin("http://localhost:3000")
+	//public ResponseEntity<Carga> insertent(@RequestBody Carga obj, @PathVariable("empresaId") Long empresaId, @PathVariable("entregaId") Long entregaId) {
+	    //Empresa p = er.findById(empresaId).orElseThrow(() -> new IllegalArgumentException("Empresa não encontrada"));
+	    //Entrega v = entr.findById(entregaId).orElseThrow(() -> new IllegalArgumentException("veiculo não encontrado"));
+	    //p.getCargas().add(obj);
+	    //v.getCargas().add(obj);
+	    //obj.setCargaVeiculo(v);
+	    //obj.setEmpresa(p);
+	    //obj.setNomeEmpresa(p.getNome());	    
+	    //obj = service.insert(obj);
+	    //return ResponseEntity.ok().body(obj);
+	//}
 	
 	//@PostMapping("/auto/{veiculoId}")	
 	//@CrossOrigin("http://localhost:3000")
