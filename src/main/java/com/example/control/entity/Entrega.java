@@ -24,6 +24,7 @@ public class Entrega  implements Serializable {
 	private Long id;
 	
 	private String codigoCarga;
+	private double total;
 	
 	
 	
@@ -72,8 +73,18 @@ public class Entrega  implements Serializable {
 	public void setCodigoCarga(String codigoCarga) {
 		this.codigoCarga = codigoCarga;
 	}
+	
+	
 
 
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
 
 	public List<Carga> getCargas() {
 		return cargas;

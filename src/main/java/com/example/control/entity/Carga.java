@@ -39,10 +39,7 @@ public class Carga  implements Serializable {
 	@OneToOne(mappedBy="carga",cascade=CascadeType.ALL)
 	private Despesa despesa;
 	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="veiculo_carga_id")
-	private Veiculo cargaVeiculo;
+	
 	
 	@JsonIgnore
 	@ManyToOne
@@ -140,18 +137,7 @@ public class Carga  implements Serializable {
 	public void setNomeEmpresa(String nomeEmpresa) {
 		this.nomeEmpresa = nomeEmpresa;
 	}
-	
-	
-
-	public Veiculo getCargaVeiculo() {
-		return cargaVeiculo;
-	}
-
-	public void setCargaVeiculo(Veiculo cargaVeiculo) {
-		this.cargaVeiculo = cargaVeiculo;
-	}
-	
-	
+		
 
 	public Entrega getEntregaCarga() {
 		return entregaCarga;

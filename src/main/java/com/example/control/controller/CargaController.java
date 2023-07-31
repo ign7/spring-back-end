@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.control.entity.Carga;
 import com.example.control.entity.Empresa;
+import com.example.control.entity.Entrega;
 import com.example.control.entity.Veiculo;
 import com.example.control.repository.CargaRepository;
 import com.example.control.repository.EmpresaRepository;
@@ -49,25 +50,11 @@ public class CargaController {
 		return ResponseEntity.ok().body(list);
 	}
 
-	@PostMapping("/{empresaId}/{veiculoId}")	
-	@CrossOrigin("http://localhost:3000")
-	public ResponseEntity<Carga> insert(@RequestBody Carga obj, @PathVariable("empresaId") Long empresaId, @PathVariable("veiculoId") Long veiculoId) {
-	    Empresa p = er.findById(empresaId).orElseThrow(() -> new IllegalArgumentException("Empresa não encontrada"));
-	    Veiculo v = vr.findById(veiculoId).orElseThrow(() -> new IllegalArgumentException("veiculo não encontrado"));
-	    p.getCargas().add(obj);
-	    v.getCargas().add(obj);
-	    obj.setCargaVeiculo(v);
-	    obj.setEmpresa(p);
-	    obj.setNomeEmpresa(p.getNome());	    
-	    obj = service.insert(obj);
-	    return ResponseEntity.ok().body(obj);
-	}
-	
-	//@PostMapping("/{empresaId}/{entregaId}")	
+	//@PostMapping("/{empresaId}/{veiculoId}")	
 	//@CrossOrigin("http://localhost:3000")
-	//public ResponseEntity<Carga> insertent(@RequestBody Carga obj, @PathVariable("empresaId") Long empresaId, @PathVariable("entregaId") Long entregaId) {
+	//public ResponseEntity<Carga> insert(@RequestBody Carga obj, @PathVariable("empresaId") Long empresaId, @PathVariable("veiculoId") Long veiculoId) {
 	    //Empresa p = er.findById(empresaId).orElseThrow(() -> new IllegalArgumentException("Empresa não encontrada"));
-	    //Entrega v = entr.findById(entregaId).orElseThrow(() -> new IllegalArgumentException("veiculo não encontrado"));
+	    //Veiculo v = vr.findById(veiculoId).orElseThrow(() -> new IllegalArgumentException("veiculo não encontrado"));
 	    //p.getCargas().add(obj);
 	    //v.getCargas().add(obj);
 	    //obj.setCargaVeiculo(v);
@@ -77,15 +64,19 @@ public class CargaController {
 	    //return ResponseEntity.ok().body(obj);
 	//}
 	
-	//@PostMapping("/auto/{veiculoId}")	
-	//@CrossOrigin("http://localhost:3000")
-	//public ResponseEntity<Carga> insertVeiculo(@RequestBody Carga obj, @PathVariable("veiculoId") Long veiculoId) {
-	    //Veiculo p = vr.findById(veiculoId).orElseThrow(() -> new IllegalArgumentException("veiculo não encontrado"));
-	    //p.getCargas().add(obj);
-	    //obj.setCargaVeiculo(p);	 
-	    //obj = service.insertVeiculo(obj);
-	    //return ResponseEntity.ok().body(obj);
-	//}
+	@PostMapping("/{entregaid}")
+	@CrossOrigin("http://localhost:3000")
+	public ResponseEntity<Carga> insert(@RequestBody Carga obj,@PathVariable("entregaid") Long entregaid){
+		Entrega entrega =entr.findById(entregaid).orElseThrow(()-> new IllegalArgumentException("id entrega nao encontrado"));
+		String nomeEmpresa=entrega.getEntregaEmpresa().getNome();
+		entrega.getCargas().add(obj);
+		obj.setEntregaCarga(entrega);
+		obj.setNomeEmpresa(nomeEmpresa);
+		obj = service.insert(obj);
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	
 	
 	@DeleteMapping(value="/{id}")	
 	@CrossOrigin("http://localhost:3000")

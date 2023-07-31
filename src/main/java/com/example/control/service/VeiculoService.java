@@ -28,6 +28,7 @@ public class VeiculoService {
 	}
 	
 	public Veiculo insert(Veiculo obj){
+		
 		return repository.save(obj);
 	}
 	
