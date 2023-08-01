@@ -27,6 +27,7 @@ public class Despesa  implements Serializable {
 	//private String contador;
 	//private double preco_Contador;
 	//private Double MEI_valor;
+	private double gastoTotal;
 	
 	@JsonIgnore
 	@OneToOne
@@ -76,8 +77,15 @@ public class Despesa  implements Serializable {
 	public void setPedagio(double pedagio) {
 		this.pedagio = pedagio;
 	}
-	
-	
+		
+
+	public double getGastoTotal() {
+		return gastoTotal;
+	}
+
+	public void setGastoTotal(double gastoTotal) {
+		this.gastoTotal = gastoTotal;
+	}
 
 	public Carga getCarga() {
 		return carga;

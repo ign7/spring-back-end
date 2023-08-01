@@ -44,6 +44,13 @@ public class DespesaController {
 		Carga p = cr.findById(cargaId).orElseThrow(() -> new IllegalArgumentException("carga não encontrada"));
 		obj.setCarga(p);
 		p.setDespesa(obj);
+		double refeicao=obj.getRefeicao();
+		double ajudante= obj.getAjudante();
+		double pedagio=obj.getPedagio();
+		double total=refeicao+ajudante+pedagio;
+		obj.setGastoTotal(total);
+		double lucro=p.getValor()-total;
+		p.setLucro(lucro);
 		obj = service.insert(obj);
 		return ResponseEntity.ok().body(obj);
 	}

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.control.entity.Carga;
 import com.example.control.entity.Empresa;
 import com.example.control.entity.Entrega;
 import com.example.control.entity.Veiculo;
@@ -47,8 +48,10 @@ public class EntregaController {
 	    p.getEntregas().add(obj);
 	    v.getEntregas().add(obj);
 	    obj.setEntregaVeiculos(v);
-	    obj.setEntregaEmpresa(p);    
+	    obj.setEntregaEmpresa(p);  
+	    obj.getTotal();
 	    obj = service.insert(obj);
+	   
 	    return ResponseEntity.ok().body(obj);
 	}
 	

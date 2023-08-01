@@ -72,6 +72,7 @@ public class CargaController {
 		entrega.getCargas().add(obj);
 		obj.setEntregaCarga(entrega);
 		obj.setNomeEmpresa(nomeEmpresa);
+		
 		obj = service.insert(obj);
 		return ResponseEntity.ok().body(obj);
 	}

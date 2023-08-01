@@ -21,12 +21,9 @@ public class Entrega  implements Serializable {
 	private static final long serialVersionUID = 1L;	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
+	private Long id;	
 	private String codigoCarga;
 	private double total;
-	
-	
 	
 	@OneToMany(mappedBy="entregaCarga")
 	private List<Carga> cargas = new ArrayList<>();
@@ -49,6 +46,7 @@ public class Entrega  implements Serializable {
 		super();
 		this.id = id;
 		this.codigoCarga = codigoCarga;
+		//this.total=total;
 	}
 
 
@@ -78,9 +76,9 @@ public class Entrega  implements Serializable {
 
 
 
-	public double getTotal() {
-		return total;
-	}
+	//public double getTotal() {
+		//return total;
+	//}
 
 	public void setTotal(double total) {
 		this.total = total;
@@ -110,6 +108,22 @@ public class Entrega  implements Serializable {
 
 	public void setEntregaEmpresa(Empresa entregaEmpresa) {
 		this.entregaEmpresa = entregaEmpresa;
+	}
+	
+	//public double getLucroTotal() {
+		   //double totalValorCarga=0;
+		   //for(Carga carge : cargas) {
+			   //totalValorCarga+=carge.getLucro();
+			    //setTotal(totalValorCarga);			   
+		   //}		   
+		   //return getTotal();		  
+	//}
+	
+	public double getTotal() {		   
+		   for(Carga carge : cargas) {
+			   total+=carge.getLucro();			    			   
+		   }		   
+		   return total;		  
 	}
 
 	@Override

@@ -1,11 +1,9 @@
 package com.example.control.entity;
 
 import java.io.Serializable;
-
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -30,6 +28,8 @@ public class Carga  implements Serializable {
 	private String dataSolicitacao;
 	private String dataEntrega;
 	private String nomeEmpresa;
+	private double valor;
+	private double lucro;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -110,6 +110,26 @@ public class Carga  implements Serializable {
 	
 	
 
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	
+
+	public double getLucro() {
+		return lucro;
+	}
+
+	public void setLucro(double lucro) {
+		this.lucro = lucro;
+	}
+	
+	
+
 	public Empresa getEmpresa() {
 		return empresa;
 	}
@@ -127,8 +147,7 @@ public class Carga  implements Serializable {
 	public void setDespesa(Despesa despesa) {
 		this.despesa = despesa;
 	}
-	
-	
+		
 
 	public String getNomeEmpresa() {
 		return nomeEmpresa;
