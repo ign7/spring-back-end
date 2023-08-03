@@ -28,6 +28,7 @@ public class Carga  implements Serializable {
 	private String dataSolicitacao;
 	private String dataEntrega;
 	private String nomeEmpresa;
+	private double peso;
 	private double valor;
 	private double lucro;
 	
@@ -119,6 +120,16 @@ public class Carga  implements Serializable {
 	}
 	
 	
+	
+	
+
+	public double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
 
 	public double getLucro() {
 		return lucro;

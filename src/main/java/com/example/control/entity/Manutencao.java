@@ -25,8 +25,7 @@ public class Manutencao  implements Serializable {
 	private String nome;
 	private double km;
 	private double valor;
-	private String dataManutencao;
-	
+	private String dataManutencao;	
 	private String observacao;
 	
 	@JsonIgnore

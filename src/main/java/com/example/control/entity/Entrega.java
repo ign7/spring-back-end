@@ -24,6 +24,7 @@ public class Entrega  implements Serializable {
 	private Long id;	
 	private String codigoCarga;
 	private double total;
+	private double lucroTotal;
 	
 	@OneToMany(mappedBy="entregaCarga")
 	private List<Carga> cargas = new ArrayList<>();
@@ -110,14 +111,12 @@ public class Entrega  implements Serializable {
 		this.entregaEmpresa = entregaEmpresa;
 	}
 	
-	//public double getLucroTotal() {
-		   //double totalValorCarga=0;
-		   //for(Carga carge : cargas) {
-			   //totalValorCarga+=carge.getLucro();
-			    //setTotal(totalValorCarga);			   
-		   //}		   
-		   //return getTotal();		  
-	//}
+	public double getLucroTotal() {
+	for(Carga carge : cargas) {
+		lucroTotal+=carge.getLucro();			    			   
+	   }		   
+	   return lucroTotal;		  
+	}
 	
 	public double getTotal() {		   
 		   for(Carga carge : cargas) {

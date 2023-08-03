@@ -24,6 +24,8 @@ public class Despesa  implements Serializable {
 	private double refeicao;
 	private double ajudante;
 	private double pedagio;
+	private double combustivel;
+	private double litro;
 	//private String contador;
 	//private double preco_Contador;
 	//private Double MEI_valor;
@@ -68,6 +70,24 @@ public class Despesa  implements Serializable {
 
 	public void setAjudante(double ajudante) {
 		this.ajudante = ajudante;
+	}
+	
+	
+
+	public double getCombustivel() {
+		return combustivel;
+	}
+
+	public void setCombustivel(double combustivel) {
+		this.combustivel = combustivel;
+	}
+
+	public double getLitro() {
+		return litro;
+	}
+
+	public void setLitro(double litro) {
+		this.litro = litro;
 	}
 
 	public double getPedagio() {

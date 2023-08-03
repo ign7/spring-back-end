@@ -1,6 +1,7 @@
 package com.example.control.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,13 @@ public class EntregaController {
 		List<Entrega> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@GetMapping(value="/{id}")
+	@CrossOrigin("http://localhost:3000")
+	public  ResponseEntity<Optional<Entrega>> findByid(@PathVariable Long id){		
+		Optional<Entrega> v=service.findbyid(id);
+		return ResponseEntity.ok().body(v);
+	}
 
 	@PostMapping("/{empresaId}/{veiculoId}")	
 	@CrossOrigin("http://localhost:3000")
@@ -49,7 +57,7 @@ public class EntregaController {
 	    v.getEntregas().add(obj);
 	    obj.setEntregaVeiculos(v);
 	    obj.setEntregaEmpresa(p);  
-	    obj.getTotal();
+	    //obj.getTotal();
 	    obj = service.insert(obj);
 	   
 	    return ResponseEntity.ok().body(obj);
