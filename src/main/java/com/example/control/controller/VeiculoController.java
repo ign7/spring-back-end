@@ -35,7 +35,7 @@ public class VeiculoController {
 	VeiculoService veiculoService;
 
 	@GetMapping
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public ResponseEntity<List<Veiculo>> findAll() {
 		List<Veiculo> list = veiculoService.findAll();
 		return ResponseEntity.ok().body(list);
