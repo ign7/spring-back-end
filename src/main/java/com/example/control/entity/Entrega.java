@@ -72,9 +72,6 @@ public class Entrega  implements Serializable {
 	public void setCodigoCarga(String codigoCarga) {
 		this.codigoCarga = codigoCarga;
 	}
-	
-	
-
 
 
 	//public double getTotal() {

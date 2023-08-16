@@ -47,7 +47,8 @@ public class DespesaController {
 		double refeicao=obj.getRefeicao();
 		double ajudante= obj.getAjudante();
 		double pedagio=obj.getPedagio();
-		double total=refeicao+ajudante+pedagio;
+		double combustivel=obj.getCombustivel();
+		double total=refeicao+ajudante+pedagio+combustivel;
 		obj.setGastoTotal(total);
 		double lucro=p.getValor()-total;
 		p.setLucro(lucro);
@@ -56,7 +57,6 @@ public class DespesaController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-
 	public ResponseEntity<Void> Delete(@PathVariable long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
