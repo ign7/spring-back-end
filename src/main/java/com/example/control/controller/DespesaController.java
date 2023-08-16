@@ -39,7 +39,7 @@ public class DespesaController {
 	}
 
 	@PostMapping("/{cargaId}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public ResponseEntity<Despesa> insert(@RequestBody Despesa obj, @PathVariable("cargaId") Long cargaId) {
 		Carga p = cr.findById(cargaId).orElseThrow(() -> new IllegalArgumentException("carga não encontrada"));
 		obj.setCarga(p);

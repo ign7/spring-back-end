@@ -43,7 +43,7 @@ public class VeiculoController {
 	
 	
 	@GetMapping(value="/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public  ResponseEntity<Optional<Veiculo>> findByid(@PathVariable Long id){		
 		Optional<Veiculo> v=veiculoService.findbyid(id);
 		return ResponseEntity.ok().body(v);
@@ -52,7 +52,7 @@ public class VeiculoController {
 	
 	
 	@PostMapping(consumes = "multipart/form-data")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public ResponseEntity<Veiculo> insert(@RequestParam("veiculo") String veiculoj, @RequestParam("imagem") MultipartFile imagem ) throws JsonMappingException, JsonProcessingException {
 	    Veiculo veiculo = new ObjectMapper().readValue(veiculoj, Veiculo.class);
 
@@ -82,7 +82,7 @@ public class VeiculoController {
 
 	
 	@DeleteMapping(value="/{id}")	
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public ResponseEntity<Void> Delete(@PathVariable long id){
 		veiculoService.delete(id);
 		return ResponseEntity.noContent().build();

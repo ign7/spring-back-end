@@ -35,21 +35,21 @@ public class EntregaController {
 	
 	
 	@GetMapping
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public ResponseEntity<List<Entrega>> findAll() {
 		List<Entrega> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public  ResponseEntity<Optional<Entrega>> findByid(@PathVariable Long id){		
 		Optional<Entrega> v=service.findbyid(id);
 		return ResponseEntity.ok().body(v);
 	}
 
 	@PostMapping("/{empresaId}/{veiculoId}")	
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public ResponseEntity<Entrega> insert(@RequestBody Entrega obj, @PathVariable("empresaId") Long empresaId, @PathVariable("veiculoId") Long veiculoId) {
 	    Empresa p = er.findById(empresaId).orElseThrow(() -> new IllegalArgumentException("Empresa não encontrada"));
 	    Veiculo v = vr.findById(veiculoId).orElseThrow(() -> new IllegalArgumentException("veiculo não encontrado"));
@@ -65,7 +65,7 @@ public class EntregaController {
 	
 	
 	@DeleteMapping(value="/{id}")	
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public ResponseEntity<Void> Delete(@PathVariable long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
