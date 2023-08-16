@@ -64,7 +64,7 @@ public class EntregaController {
 	}
 	
 	
-	@DeleteMapping(value="/{id}")	
+	@DeleteMapping(value="delete/{id}")	
 	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
 	public ResponseEntity<Void> Delete(@PathVariable long id){
 		service.delete(id);
