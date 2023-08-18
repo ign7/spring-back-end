@@ -21,6 +21,7 @@ import com.example.control.repository.CargaRepository;
 import com.example.control.repository.EmpresaRepository;
 import com.example.control.repository.EntregaRepository;
 import com.example.control.repository.VeiculoRepository;
+import com.example.control.util.CorsConfiguration;
 import com.example.control.service.CargaService;
 
 @RestController
@@ -43,8 +44,7 @@ public class CargaController {
 	EntregaRepository entr;
 	
 
-	@GetMapping
-	
+	@GetMapping	
 	public ResponseEntity<List<Carga>> findAll() {
 		List<Carga> list = service.findAll();
 		return ResponseEntity.ok().body(list);
@@ -64,8 +64,7 @@ public class CargaController {
 	    //return ResponseEntity.ok().body(obj);
 	//}
 	
-	@PostMapping("/{entregaid}")
-	
+	@PostMapping("/{entregaid}")	
 	public ResponseEntity<Carga> insert(@RequestBody Carga obj,@PathVariable("entregaid") Long entregaid){
 		Entrega entrega =entr.findById(entregaid).orElseThrow(()-> new IllegalArgumentException("id entrega nao encontrado"));
 		String nomeEmpresa=entrega.getEntregaEmpresa().getNome();
@@ -79,8 +78,7 @@ public class CargaController {
 	
 	
 	
-	@DeleteMapping(value="/{id}")	
-	
+	@DeleteMapping(value="/{id}")		
 	public ResponseEntity<Void> Delete(@PathVariable long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();

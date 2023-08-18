@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import com.example.control.util.CorsConfiguration;
 
 import com.example.control.entity.Veiculo;
 import com.example.control.service.VeiculoService;
@@ -34,16 +35,14 @@ public class VeiculoController {
 	@Autowired
 	VeiculoService veiculoService;
 
-	@GetMapping
-	
+	@GetMapping	
 	public ResponseEntity<List<Veiculo>> findAll() {
 		List<Veiculo> list = veiculoService.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	
-	@GetMapping(value="/{id}")
-	
+	@GetMapping(value="/{id}")	
 	public  ResponseEntity<Optional<Veiculo>> findByid(@PathVariable Long id){		
 		Optional<Veiculo> v=veiculoService.findbyid(id);
 		return ResponseEntity.ok().body(v);
@@ -51,8 +50,7 @@ public class VeiculoController {
 	
 	
 	
-	@PostMapping(consumes = "multipart/form-data")
-	
+	@PostMapping(consumes = "multipart/form-data")	
 	public ResponseEntity<Veiculo> insert(@RequestParam("veiculo") String veiculoj, @RequestParam("imagem") MultipartFile imagem ) throws JsonMappingException, JsonProcessingException {
 	    Veiculo veiculo = new ObjectMapper().readValue(veiculoj, Veiculo.class);
 
@@ -81,8 +79,7 @@ public class VeiculoController {
 	
 
 	
-	@DeleteMapping(value="/{id}")	
-	
+	@DeleteMapping(value="/{id}")		
 	public ResponseEntity<Void> Delete(@PathVariable long id){
 		veiculoService.delete(id);
 		return ResponseEntity.noContent().build();

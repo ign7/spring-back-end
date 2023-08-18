@@ -9,12 +9,11 @@ public class CorsConfiguration implements WebMvcConfigurer {
 	
 	@Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-            .allowedOrigins("https://front-control-git-main-ign7.vercel.app")
-            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
-        
-        registry.addMapping("/**")
-        .allowedOrigins("http://localhost:3000")
+		registry.addMapping("/**")
+        .allowedOrigins(
+            "https://front-control-git-main-ign7.vercel.app",
+            "http://localhost:3000"
+        )
         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
     }
 	
