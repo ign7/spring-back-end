@@ -37,14 +37,14 @@ public class EmpresaController {
 	
 
 	@GetMapping
-	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
+	
 	public ResponseEntity<List<Empresa>> findAll() {
 		List<Empresa> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 
 	@PostMapping("/{veiculoId}")	
-	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
+	
 	public ResponseEntity<Empresa> insert(@RequestBody Empresa obj, @PathVariable("veiculoId") Long veiculoId) {
 	    Veiculo p = vr.findById(veiculoId).orElseThrow(() -> new IllegalArgumentException("Veiculo não encontrado"));
 	    p.getEmpresas().add(obj);
@@ -54,7 +54,7 @@ public class EmpresaController {
 	}
 	
 	@PostMapping
-	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
+	
 	public ResponseEntity<Empresa> insertEmpresa(@RequestBody Empresa obj){
 		obj  = service.insert(obj);
 		URI uri =ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -62,7 +62,7 @@ public class EmpresaController {
 	}
 	
 	@DeleteMapping(value="/{id}")
-	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
+	
 	public ResponseEntity<Void> Delete(@PathVariable long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();

@@ -42,7 +42,7 @@ public class ManutencaoController {
 	}
 
 	@PostMapping("/{veiculoId}")	
-	@CrossOrigin("https://front-control-git-main-ign7.vercel.app")
+	
 	public ResponseEntity<Manutencao> insert(@RequestBody Manutencao obj, @PathVariable("veiculoId") Long veiculoId) {
 	    Veiculo p = vr.findById(veiculoId).orElseThrow(() -> new IllegalArgumentException("Veiculo não encontrado"));
 	    p.getManutencoes().add(obj);
