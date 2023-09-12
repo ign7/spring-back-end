@@ -67,11 +67,10 @@ public class CargaController {
 	@PostMapping("/{entregaid}")	
 	public ResponseEntity<Carga> insert(@RequestBody Carga obj,@PathVariable("entregaid") Long entregaid){
 		Entrega entrega =entr.findById(entregaid).orElseThrow(()-> new IllegalArgumentException("id entrega nao encontrado"));
-		String nomeEmpresa=entrega.getEntregaEmpresa().getNome();
+		//String nomeEmpresa=entrega.getEntregaEmpresa().getNome();
 		entrega.getCargas().add(obj);
 		obj.setEntregaCarga(entrega);
-		obj.setNomeEmpresa(nomeEmpresa);
-		
+		//obj.setNomeEmpresa(nomeEmpresa);		
 		obj = service.insert(obj);
 		return ResponseEntity.ok().body(obj);
 	}

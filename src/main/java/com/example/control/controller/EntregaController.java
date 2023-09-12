@@ -34,38 +34,43 @@ public class EntregaController {
 	
 	
 	
-	@GetMapping
-	
+	@GetMapping	
 	public ResponseEntity<List<Entrega>> findAll() {
 		List<Entrega> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@GetMapping(value="/{id}")
-	
+	@GetMapping(value="/{id}")	
 	public  ResponseEntity<Optional<Entrega>> findByid(@PathVariable Long id){		
 		Optional<Entrega> v=service.findbyid(id);
 		return ResponseEntity.ok().body(v);
 	}
 
-	@PostMapping("/{empresaId}/{veiculoId}")	
-	
-	public ResponseEntity<Entrega> insert(@RequestBody Entrega obj, @PathVariable("empresaId") Long empresaId, @PathVariable("veiculoId") Long veiculoId) {
-	    Empresa p = er.findById(empresaId).orElseThrow(() -> new IllegalArgumentException("Empresa não encontrada"));
-	    Veiculo v = vr.findById(veiculoId).orElseThrow(() -> new IllegalArgumentException("veiculo não encontrado"));
-	    p.getEntregas().add(obj);
-	    v.getEntregas().add(obj);
-	    obj.setEntregaVeiculos(v);
-	    obj.setEntregaEmpresa(p);  
+	//@PostMapping("/{empresaId}/{veiculoId}")		
+	//public ResponseEntity<Entrega> insert(@RequestBody Entrega obj, @PathVariable("empresaId") Long empresaId, @PathVariable("veiculoId") Long veiculoId) {
+	   //Empresa p = er.findById(empresaId).orElseThrow(() -> new IllegalArgumentException("Empresa não encontrada"));
+	    //Veiculo v = vr.findById(veiculoId).orElseThrow(() -> new IllegalArgumentException("veiculo não encontrado"));
+	    //p.getEntregas().add(obj);
+	    //v.getEntregas().add(obj);
+	    //obj.setEntregaVeiculos(v);
+	    //obj.setEntregaEmpresa(p);  
 	    //obj.getTotal();
-	    obj = service.insert(obj);
-	   
+	    //obj = service.insert(obj);	   
+	    //return ResponseEntity.ok().body(obj);
+	//}
+	
+	@PostMapping("/{veiculoId}")		
+	public ResponseEntity<Entrega> insert(@RequestBody Entrega obj,  @PathVariable("veiculoId") Long veiculoId) {	   
+	    Veiculo v = vr.findById(veiculoId).orElseThrow(() -> new IllegalArgumentException("veiculo não encontrado"));	   
+	    v.getEntregas().add(obj);
+	    obj.setEntregaVeiculos(v);   
+	    //obj.getTotal();
+	    obj = service.insert(obj);	   
 	    return ResponseEntity.ok().body(obj);
 	}
 	
 	
-	@DeleteMapping(value="delete/{id}")	
-	
+	@DeleteMapping(value="delete/{id}")		
 	public ResponseEntity<Void> Delete(@PathVariable long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
