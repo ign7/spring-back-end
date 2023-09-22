@@ -36,8 +36,8 @@ public class Empresa implements Serializable {
 	@OneToMany(mappedBy = "empresa")
 	private List<Carga> cargas = new ArrayList<>();
 	
-	@OneToMany
-	private List<Entrega> entregas = new ArrayList<>();
+	//@OneToMany
+	//private List<Entrega> entregas = new ArrayList<>();
 
 	public Empresa() {
 		
@@ -92,16 +92,15 @@ public class Empresa implements Serializable {
 		this.cargas = cargas;
 	}
 	
-	
-	
+		
 
-	public List<Entrega> getEntregas() {
-		return entregas;
-	}
+	//public List<Entrega> getEntregas() {
+		//return entregas;
+	//}
 
-	public void setEntregas(List<Entrega> entregas) {
-		this.entregas = entregas;
-	}
+	//public void setEntregas(List<Entrega> entregas) {
+		//this.entregas = entregas;
+	//}
 
 	@Override
 	public int hashCode() {

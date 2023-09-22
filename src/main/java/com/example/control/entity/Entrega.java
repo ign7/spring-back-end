@@ -22,7 +22,7 @@ public class Entrega  implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;	
-	private String codigoCarga;
+	private String codigoEntrega;
 	private double total;
 	private double lucroTotal;
 	
@@ -34,19 +34,19 @@ public class Entrega  implements Serializable {
 	@ManyToOne
 	private Veiculo entregaVeiculos;
 	
-	@JsonIgnore
-	@JoinColumn(name="entrega_empresa_id")
-	@ManyToOne
-	private Empresa entregaEmpresa;
+//	@JsonIgnore
+//	@JoinColumn(name="entrega_empresa_id")
+//	@ManyToOne
+//	private Empresa entregaEmpresa;
   
 	  public Entrega() {
 		  
 	  }	 
 
-	public Entrega(Long id, String codigoCarga) {
+	public Entrega(Long id, String codigoEntrega) {
 		super();
 		this.id = id;
-		this.codigoCarga = codigoCarga;
+		this.codigoEntrega = codigoEntrega;
 		//this.total=total;
 	}
 
@@ -63,14 +63,14 @@ public class Entrega  implements Serializable {
 	
 		
 
-	public String getCodigoCarga() {
-		return codigoCarga;
+	public String getCodigoEntrega() {
+		return codigoEntrega;
 	}
 
 
 
-	public void setCodigoCarga(String codigoCarga) {
-		this.codigoCarga = codigoCarga;
+	public void setCodigoEntrega(String codigoEntrega) {
+		this.codigoEntrega = codigoEntrega;
 	}
 
 
@@ -100,13 +100,13 @@ public class Entrega  implements Serializable {
 	
 	
 
-	public Empresa getEntregaEmpresa() {
-		return entregaEmpresa;
-	}
-
-	public void setEntregaEmpresa(Empresa entregaEmpresa) {
-		this.entregaEmpresa = entregaEmpresa;
-	}
+//	public Empresa getEntregaEmpresa() {
+//		return entregaEmpresa;
+//	}
+//
+//	public void setEntregaEmpresa(Empresa entregaEmpresa) {
+//		this.entregaEmpresa = entregaEmpresa;
+//	}
 	
 	public double getLucroTotal() {
 	for(Carga carge : cargas) {

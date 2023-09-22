@@ -42,8 +42,8 @@ public class EntregaController {
 	
 	@GetMapping(value="/{id}")	
 	public  ResponseEntity<Optional<Entrega>> findByid(@PathVariable Long id){		
-		Optional<Entrega> v=service.findbyid(id);
-		return ResponseEntity.ok().body(v);
+		Optional<Entrega> entrega=service.findbyid(id);
+		return ResponseEntity.ok().body(entrega);
 	}
 
 	//@PostMapping("/{empresaId}/{veiculoId}")		
